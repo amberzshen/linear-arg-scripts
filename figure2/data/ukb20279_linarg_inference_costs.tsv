@@ -1,0 +1,6 @@
+	no_filt _chr1-22	maf_0.01_chr1-22	new_inf_no_filt_chr21
+make-geno	148.56	389.64	5.32
+forward-backward	64.25	202.81	1.43
+reduction-union-recom	671.86	892.58	12.97
+merge	287.29	165.93	1.79
+add-individual-nodes	493.61	218.85	1.33
