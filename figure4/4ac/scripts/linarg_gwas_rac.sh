@@ -10,15 +10,15 @@ source $HOME/.local/bin/env
 uv tool install git+https://github.com/quattro/linear-dag.git
 
 if [[ "$dataset" == "all" ]]; then
-    linarg="ukb20279_chr1-22.h5"
+    linarg="ukb20279_chr1-22_individual.h5"
 else
-    linarg="ukb20279_maf_0.01_chr1-22.h5"
+    linarg="ukb20279_maf_0.01_chr1-22_individual.h5"
 fi
 
 pheno_cols=$(cat phenotypes.txt | tr '\n' ' ')
 covar_cols=$(cat covariates.txt | tr '\n' ' ')
 
-bash /mnt/project/amber/scripts/profile.sh linarg_gwas_repeat_covar_${dataset}_chr1-22_${node}.csv \
+bash /mnt/project/amber/scripts/profile.sh linarg_gwas_rac_${dataset}_chr1-11-21_${node}.csv \
     kodama assoc \
         $linarg \
         phenotypes.tsv \
@@ -26,5 +26,7 @@ bash /mnt/project/amber/scripts/profile.sh linarg_gwas_repeat_covar_${dataset}_c
         --pheno-name $pheno_cols \
         --covar-name $covar_cols  \
         --chrom ${chromosomes[@]}  \
-        --repeat-covar \
-        --out linarg_gwas_repeat_covar_${dataset}_chr1-22_${node}
+        --recompute-ac \
+        --no-hwe \
+        --out linarg_gwas_rac_${dataset}_chr1-11-21_remade_${node}
+
